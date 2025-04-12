@@ -167,15 +167,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="Retrieve"
                 android:layout_marginTop="10sp"
-                android:backgroundTint="#3334CC"/>
-
-            <TextView
-                android:id="@+id/search_confirm_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/retrieve_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="#3334CC"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

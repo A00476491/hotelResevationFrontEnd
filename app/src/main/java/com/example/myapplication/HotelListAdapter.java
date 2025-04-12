@@ -11,7 +11,7 @@ import java.util.List;
 public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.HotelViewHolder> {
     private List<Hotel> hotelList;
 
-    private ItemClickListener clickListener;
+    private HotelClickListener clickListener;
 
     public HotelListAdapter(List<Hotel> hotelList) {
         this.hotelList = hotelList;
@@ -20,16 +20,21 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
     @NonNull
     @Override
     public HotelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hotel_list_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hotel_list_viewholder, parent, false);
         return new HotelViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HotelViewHolder holder, int position) {
         Hotel hotel = hotelList.get(position);
-        holder.tvHotelName.setText(hotel.getName());
-        holder.tvPrice.setText("$" + hotel.getPrice() + "/night");
-        holder.tvAvailability.setText(hotel.getAvailable());
+        holder.HotelName.setText(hotel.getName());
+        holder.Price.setText("$" + hotel.getPrice());
+        if ("true".equalsIgnoreCase(hotel.getAvailable())) {
+            holder.Availability.setText("Available");
+        } else {
+            holder.Availability.setText("Not Available");
+        }
+
     }
 
     @Override
@@ -37,18 +42,18 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
         return hotelList.size();
     }
 
-    public void setClickListener(ItemClickListener itemClickListener){
-        this.clickListener = itemClickListener;
+    public void setClickListener(HotelClickListener hotelClickListener){
+        this.clickListener = hotelClickListener;
     }
 
     class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView tvHotelName, tvPrice, tvAvailability;
+        TextView HotelName, Price, Availability;
 
         public HotelViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvHotelName = itemView.findViewById(R.id.tvHotelName);
-            tvPrice = itemView.findViewById(R.id.tvPrice);
-            tvAvailability = itemView.findViewById(R.id.tvAvailability);
+            HotelName = itemView.findViewById(R.id.HotelName);
+            Price = itemView.findViewById(R.id.Price);
+            Availability = itemView.findViewById(R.id.Availability);
 
             itemView.setOnClickListener(this);
         }

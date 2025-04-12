@@ -12,6 +12,6 @@ public interface ApiInterface {
     @GET("/api/hotels/")
     public Call<List<Hotel>> getHotelsLists();
 
-    @POST("/api/app/reservation/")
+    @POST("/api/create_reservation/")
     Call<Map<String, String>> createReservation(@Body ReservationInfo reservationInfo);
 }
